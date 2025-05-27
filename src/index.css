@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:600&family=Playfair+Display:700&display=swap');
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer utilities {
+  .font-playfair-bold {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  .font-inter-semibold {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+
+  .scroll-image-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+  }
+  .scroll-image-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+  }
+  .scroll-text-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+  }
+  .scroll-text-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+  }
+  .scroll-circle {
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+  }
+
+  .animate {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+}
