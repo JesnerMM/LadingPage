@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -10,15 +12,15 @@ export const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#DCFCE7] ${
@@ -28,9 +30,9 @@ export const Navigation = () => {
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <img
-            src="src\img\IconoNav.png"
-            alt="El isotipo de Don Pepe, diseñado por Kactus, es un oso de color marrón claro con orejas redondas, dos puntos negros como ojos y un cuadrado negro como nariz."
-            className="w-10 h-10 object-contain"
+            src="/IconoNav.png"
+            alt="El isotipo de Don Pepe..."
+            className="w-10 h-10 object-contain cursor-pointer"
             onClick={() => scrollToSection("hero")}
           />
           <h1 className="text-xl font-playfair-bold text-green-700">

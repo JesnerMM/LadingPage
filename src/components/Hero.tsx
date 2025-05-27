@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 export const Hero = () => {
-  const imageRef = useRef(null);
-  const textRef = useRef(null);
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -12,10 +12,10 @@ export const Hero = () => {
       },
       { threshold: 0.5 }
     );
-    if (imageRef.current) observer.observe(imageRef.current);
+
     if (textRef.current) observer.observe(textRef.current);
+
     return () => {
-      if (imageRef.current) observer.unobserve(imageRef.current);
       if (textRef.current) observer.unobserve(textRef.current);
     };
   }, []);
@@ -67,13 +67,13 @@ export const Hero = () => {
       >
         <div className="container mx-auto px-5 sm:px-6 md:px-8 lg:px-10 py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
           <div
+            ref={textRef}
             className={`w-full md:w-1/2 mb-6 sm:mb-8 md:mb-0 md:pr-6 lg:pr-8 xl:pr-10 fade-in ${
               isVisible ? "visible" : ""
             } flex flex-col items-center md:items-start text-center md:text-left`}
-            ref={textRef}
           >
             <img
-              src="src/img/IconoGauche.png"
+              src="/IconoGauche.png"
               alt="Un ícono de una rebanada de queso verde brillante con agujeros ovalados blancos delineados en negro, con un borde negro grueso y ondulado, diseñado por Kactus para el Guche."
               className="sandwich-icon fade-in visible mx-auto md:mx-0"
             />
@@ -91,8 +91,8 @@ export const Hero = () => {
             </p>
             <div className="w-full flex justify-center md:justify-start">
               <button
-                className="bg-green-600 hover:bg-green-700 text-white py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-colors duration-300 transform hover:scale-105 font-inter-semibold text-sm sm:text-base md:text-lg"
                 onClick={() => scrollToSection("contact")}
+                className="bg-green-600 hover:bg-green-700 text-white py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-colors duration-300 transform hover:scale-105 font-inter-semibold text-sm sm:text-base md:text-lg"
               >
                 Quiero probar esta receta
               </button>
