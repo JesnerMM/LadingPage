@@ -106,60 +106,53 @@ export const Preparation = () => {
         <h2 className="text-3xl md:text-4xl font-playfair-bold text-center text-green-800 mb-10">
           Preparación
         </h2>
-        <p className="font-inter-semibold text-center text-gray-700 max-w-2xl mx-auto mb-10">
+        <p className="font-inter-semibold text-center text-gray-700 max-w-2xl mx-auto mb-10 px-2">
           Sigue estos sencillos pasos para preparar el auténtico Sándwich
           Turrialba y disfrutar de un sabor único en cada bocado.
         </p>
+
         <div className="space-y-16">
           {steps.map((step, index) => {
             const isEven = index % 2 === 0;
             const visible = visibleSteps[index];
-            const imageClass = isEven
-              ? "scroll-image-left"
-              : "scroll-image-right";
-            const textClass = isEven ? "scroll-text-right" : "scroll-text-left";
 
             return (
               <div
                 key={index}
                 data-index={index}
                 ref={(el) => (stepRefs.current[index] = el)}
-                className={`flex flex-col lg:flex-row items-center gap-8 ${
+                className={`flex flex-col lg:flex-row items-center gap-6 ${
                   isEven ? "" : "lg:flex-row-reverse"
                 }`}
               >
                 <div
-                  className={`w-full lg:w-5/12 overflow-hidden rounded-xl shadow-lg ${
-                    visible ? "animate" : ""
-                  } ${imageClass}`}
-                  style={{ height: "240px", maxHeight: "240px" }}
+                  className={`w-full lg:w-5/12 max-w-lg aspect-[4/3] overflow-hidden rounded-xl shadow-lg ${
+                    visible ? "animate-fade-in" : "opacity-0"
+                  }`}
                 >
                   <img
                     src={step.image}
                     alt={step.alt}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 
-                <div
-                  className={`w-full flex justify-center items-center ${
-                    visible ? "animate" : ""
-                  } scroll-circle lg:w-2/12`}
-                >
+                <div className="w-full flex justify-center items-center lg:w-2/12">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-600 text-white font-bold flex items-center justify-center text-base md:text-lg">
                     {index + 1}
                   </div>
                 </div>
 
                 <div
-                  className={`w-full lg:w-5/12 ${
-                    visible ? "animate" : ""
-                  } ${textClass}`}
+                  className={`w-full lg:w-5/12 px-4 lg:px-0 ${
+                    visible ? "animate-fade-in" : "opacity-0"
+                  }`}
                 >
                   <h3 className="text-xl md:text-2xl font-playfair-bold text-green-700 mb-2 text-center lg:text-left">
                     {step.title}
                   </h3>
-                  <p className="text-gray-700 font-inter-semibold text-sm md:text-base text-center lg:text-left">
+                  <p className="text-gray-700 font-inter-semibold text-sm md:text-base text-center lg:text-left leading-relaxed">
                     {step.description}
                   </p>
                 </div>
