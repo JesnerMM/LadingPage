@@ -116,6 +116,9 @@ export const Preparation = () => {
             const isEven = index % 2 === 0;
             const visible = visibleSteps[index];
 
+            const commonTransitionClasses =
+              "transition-opacity transition-transform duration-[1200ms] ease-in-out";
+
             return (
               <div
                 key={index}
@@ -126,8 +129,10 @@ export const Preparation = () => {
                 }`}
               >
                 <div
-                  className={`w-full lg:w-5/12 max-w-lg aspect-[4/3] overflow-hidden rounded-xl shadow-lg ${
-                    visible ? "animate-fade-in" : "opacity-0"
+                  className={`w-full lg:w-5/12 max-w-lg aspect-[4/3] overflow-hidden rounded-xl shadow-lg ${commonTransitionClasses} ${
+                    visible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
                   }`}
                 >
                   <img
@@ -138,15 +143,24 @@ export const Preparation = () => {
                   />
                 </div>
 
-                <div className="w-full flex justify-center items-center lg:w-2/12">
+                <div
+                  className={`${commonTransitionClasses} w-full flex justify-center items-center lg:w-2/12`}
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? "translateY(0)" : "translateY(32px)",
+                    transitionProperty: "opacity, transform",
+                  }}
+                >
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-600 text-white font-bold flex items-center justify-center text-base md:text-lg">
                     {index + 1}
                   </div>
                 </div>
 
                 <div
-                  className={`w-full lg:w-5/12 px-4 lg:px-0 ${
-                    visible ? "animate-fade-in" : "opacity-0"
+                  className={`${commonTransitionClasses} w-full lg:w-5/12 px-4 lg:px-0 ${
+                    visible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
                   }`}
                 >
                   <h3 className="text-xl md:text-2xl font-playfair-bold text-green-700 mb-2 text-center lg:text-left">
