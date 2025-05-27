@@ -33,7 +33,7 @@ const ingredients = [
     name: "Sal y pimienta",
     amount: "Al gusto",
     image: "https://carmencita.com/shop/1731-large_default/pimienta-sal.jpg",
-    alt: "Una toma aérea de un montón de granos de pimienta negra enteros mezclados con cristales gruesos de sal marina blanca, sobre un fondo blanco liso.",
+    alt: "Una toma aerea de un montón de granos de pimienta negra enteros mezclados con cristales gruesos de sal marina blanca, sobre un fondo blanco liso.",
   },
   {
     name: "Alfalfa",
